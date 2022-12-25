@@ -10,12 +10,7 @@ const QuizHome = () => {
 
   const quizzes = AddID(QuizBank).results;
   const [index, setIndex] = useState(0);
- 
-
-
-
-  
-  const currentQuiz = quizzes[index];
+    const currentQuiz = quizzes[index];
   
   const answers = [
     currentQuiz.correct_answer,
