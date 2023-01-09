@@ -1,8 +1,13 @@
+import _ from "lodash";
+
 const AddID = (data) => {
-  data.results.forEach((question, index) => {
+  const shuffledQuestions = _.shuffle(data.results);
+  shuffledQuestions.forEach((question, index) => {
     question.id = index + 1;
   });
-  return data;
+  return {
+    results: shuffledQuestions,
+  };
 };
 
 export default AddID;
