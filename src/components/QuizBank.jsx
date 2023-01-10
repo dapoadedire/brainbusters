@@ -1,101 +1,68 @@
 const QuizBank = {
-  response_code: 0,
-  results: [
+  "response_code": 0,
+  "results": [
     {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "This field is sometimes known as &ldquo;The Dismal Science.&rdquo;",
-      correct_answer: "Economics",
-      incorrect_answers: ["Philosophy", "Politics", "Physics"],
+      "category": "Science: Computers",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
+      "correct_answer": "1000",
+      "incorrect_answers": [
+        "512",
+        "1024",
+        "500"
+      ]
     },
     {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question: "Which language is NOT Indo-European?",
-      correct_answer: "Hungarian",
-      incorrect_answers: ["Russian", "Greek", "Latvian"],
+      "category": "Science: Computers",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "How many kilobytes in one gigabyte (in decimal)?",
+      "correct_answer": "1000000",
+      "incorrect_answers": [
+        "1024",
+        "1000",
+        "1048576"
+      ]
     },
     {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Which essential condiment is also known as Japanese horseradish?",
-      correct_answer: "Wasabi ",
-      incorrect_answers: ["Mentsuyu", "Karashi", "Ponzu"],
+      "category": "Science: Computers",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "On Twitter, what was the original character limit for a Tweet?",
+      "correct_answer": "140",
+      "incorrect_answers": [
+        "120",
+        "160",
+        "100"
+      ]
     },
     {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "After how many years would you celebrate your crystal anniversary?",
-      correct_answer: "15",
-      incorrect_answers: ["20", "10", "25"],
+      "category": "Science: Computers",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which programming language shares its name with an island in Indonesia?",
+      "correct_answer": "Java",
+      "incorrect_answers": [
+        "Python",
+        "C",
+        "Jakarta"
+      ]
     },
     {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Which Italian automobile manufacturer gained majority control of U.S. automobile manufacturer Chrysler in 2011?",
-      correct_answer: "Fiat",
-      incorrect_answers: ["Maserati", "Alfa Romeo", "Ferrari"],
-    },
-    {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Which of these is the name of a Japanese system of alternative medicine, literally meaning &quot;finger pressure&quot;?",
-      correct_answer: "Shiatsu",
-      incorrect_answers: ["Ukiyo", "Majime", "Ikigai"],
-    },
-    {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question: "What is the German word for &quot;spoon&quot;?",
-      correct_answer: "L&ouml;ffel",
-      incorrect_answers: ["Gabel", "Messer", "Essst&auml;bchen"],
-    },
-    {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "What country saw a world record 315 million voters turn out for elections on May 20, 1991?",
-      correct_answer: "India",
-      incorrect_answers: ["United States of America", "Soviet Union", "Poland"],
-    },
-    {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "According to the United States&#039; CDC, one in how many Americans die annually due to smoking?",
-      correct_answer: "Five",
-      incorrect_answers: ["Twenty", "Ten", "One hundred"],
-    },
-    {
-      category: "General Knowledge",
-      type: "multiple",
-      difficulty: "medium",
-      question:
-        "Which iconic Disneyland attraction was closed in 2017 to be remodeled as a &quot;Guardians of the Galaxy&quot; themed ride?",
-      correct_answer: "Twilight Zone Tower of Terror",
-      incorrect_answers: [
-        "The Haunted Mansion",
-        "Pirates of the Caribbean",
-        "Peter Pan&#039;s Flight",
-      ],
-    },
-    
-  ],
-};
+      "category": "Science: Computers",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What language does Node.js use?",
+      "correct_answer": "JavaScript",
+      "incorrect_answers": [
+        "Java",
+        "Java Source",
+        "Joomla Source Code"
+      ]
+    }
+  ]
+}
 
 // add id to each question
 
