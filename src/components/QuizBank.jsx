@@ -5,15 +5,6 @@ const QuizBank = {
       category: "Science: Computers",
       type: "multiple",
       difficulty: "easy",
-      question:
-        "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
-      correct_answer: "1000",
-      incorrect_answers: ["512", "1024", "500"],
-    },
-    {
-      category: "Science: Computers",
-      type: "multiple",
-      difficulty: "easy",
       question: "How many kilobytes in one gigabyte (in decimal)?",
       correct_answer: "1000000",
       incorrect_answers: ["1024", "1000", "1048576"],
