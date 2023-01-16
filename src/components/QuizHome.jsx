@@ -1,29 +1,31 @@
 import { useState } from "react";
-import QuizBank from "./QuizBank";
-import _ from "lodash";
+// import QuizBank from "./QuizBank";
+// import _ from "lodash";
 import ctl from "@netlify/classnames-template-literals";
 import parse from "html-react-parser";
 //  "html-react-parser": "^3.0.7",
 
-const quizzes = QuizBank.results.map((question, index) => {
-  question.id = index + 1;
-  question.all_options = _.shuffle([
-    question.correct_answer,
-    ...question.incorrect_answers,
-  ]);
-  return question;
-});
+// const quiz = QuizBank.results.map((question, index) => {
+//   question.id = index + 1;
+//   question.all_options = _.shuffle([
+//     question.correct_answer,
+//     ...question.incorrect_answers,
+//   ]);
+//   return question;
+// });
 
-const QuizHome = () => {
+const QuizHome = (quizzes) => {
+  const quiz = quizzes.quizzes;
+  console.log(quiz);
   const [activeQuiz, setActiveQuiz] = useState(0);
   const [score, setScore] = useState(0);
-  const currentQuiz = quizzes[activeQuiz];
+  const currentQuiz = quiz[activeQuiz];
   const [selected, setSelected] = useState(null);
   const [showResult, setShowResult] = useState(false);
 
   function nextQuiz() {
     setSelected(null);
-    if (activeQuiz !== quizzes.length - 1) {
+    if (activeQuiz !== quiz.length - 1) {
       setActiveQuiz((p) => p + 1);
     } else {
       setActiveQuiz(0);
@@ -34,7 +36,7 @@ const QuizHome = () => {
   const { category, difficulty, question, correct_answer, id, all_options } =
     currentQuiz;
 
-  console.log(activeQuiz, quizzes.length);
+  console.log(activeQuiz, quiz.length);
   const gradeAnswer = (answer, index) => {
     setSelected(index);
     if (answer === correct_answer) {
@@ -63,7 +65,7 @@ const QuizHome = () => {
               <p className={quizNoStyles}>
                 {addLeadingZero(id)}/
                 <span className="font-bold text-blue-900">
-                  {addLeadingZero(quizzes.length)}
+                  {addLeadingZero(quiz.length)}
                 </span>
               </p>
 
@@ -94,14 +96,14 @@ const QuizHome = () => {
               disabled={selected === null}
               className={nextButtonStyles}
             >
-              {activeQuiz === quizzes.length - 1 ? "Finish" : "Next"}
+              {activeQuiz === quiz.length - 1 ? "Finish" : "Next"}
             </button>
           </div>
         ) : (
           <div className={resutlContainerStyles}>
             <h3 className={resutlTitleStyles}>Result</h3>
             <p className={resutlTotalQuestionStyles}>
-              Total Question: <span>{quizzes.length}</span>
+              Total Question: <span>{quiz.length}</span>
             </p>
             <p className={resutlTotalScoreStyles}>
               Total Score:<span> {score}</span>
