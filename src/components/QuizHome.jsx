@@ -69,10 +69,11 @@ const QuizHome = () => {
                   {addLeadingZero(id)}/{addLeadingZero(quizzes.length)}
                 </p>
 
-                <p className={categoryStyles}>{category}</p>
+                
                 <p className={difficultyStyles}>{difficulty}</p>
+                
               </div>
-
+            <p className={categoryStyles}>{category}</p>
               <p className={questionStyles}>{question}</p>
       
          
@@ -112,12 +113,13 @@ const QuizHome = () => {
 
 const mainStyles = ctl(`
   flex
-  h-screen
+  min-h-screen
   flex-col
   items-center
   justify-center
   bg-gray-900
-  p-5
+  px-5
+  py-10	
 `);
 
 
@@ -169,8 +171,9 @@ const questionStyles = ctl(`
 
 const categoryStyles = ctl(`
   mt-5
-  rounded-lg
-   border
+  mb-10
+   rounded-lg
+  border
   border-gray-400
   p-2
   text-lg
@@ -244,7 +247,6 @@ const containerStyles = ctl(`
 
 
 const topInfoStyles = ctl(`
-  mb-10
   flex
   items-center
   justify-between
