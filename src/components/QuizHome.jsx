@@ -70,10 +70,13 @@ const QuizHome = () => {
                 </p>
 
                 
+
+                
                 <p className={difficultyStyles}>{difficulty}</p>
                 
+                
               </div>
-            <p className={categoryStyles}>{category}</p>
+            <p className={categoryStyles}>{category}</p>            <p className={categoryStyles}>{category}</p>
               <p className={questionStyles}>{question}</p>
       
          
@@ -177,6 +180,7 @@ const categoryStyles = ctl(`
   border-gray-400
   p-2
   text-lg
+  mb-10
 
 `);
 
