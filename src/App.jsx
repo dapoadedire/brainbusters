@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Quiz from "./components/Quiz";
+import Quiz from "./components/HomePage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,9 +15,9 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div>
+      
         <Quiz />
-      </div>
+    
     </QueryClientProvider>
   );
 }

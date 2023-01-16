@@ -1,29 +1,17 @@
 import { useState } from "react";
-// import QuizBank from "./QuizBank";
-// import _ from "lodash";
 import ctl from "@netlify/classnames-template-literals";
 import parse from "html-react-parser";
-//  "html-react-parser": "^3.0.7",
-
-// const quiz = QuizBank.results.map((question, index) => {
-//   question.id = index + 1;
-//   question.all_options = _.shuffle([
-//     question.correct_answer,
-//     ...question.incorrect_answers,
-//   ]);
-//   return question;
-// });
 
 const QuizHome = (quizzes) => {
   const quiz = quizzes.quizzes;
   console.log(quiz);
   const [activeQuiz, setActiveQuiz] = useState(0);
   const [score, setScore] = useState(0);
-  const currentQuiz = quiz[activeQuiz];
+
   const [selected, setSelected] = useState(null);
   const [showResult, setShowResult] = useState(false);
 
-  function nextQuiz() {
+  const nextQuiz = () => {
     setSelected(null);
     if (activeQuiz !== quiz.length - 1) {
       setActiveQuiz((p) => p + 1);
@@ -31,34 +19,23 @@ const QuizHome = (quizzes) => {
       setActiveQuiz(0);
       setShowResult(true);
     }
-  }
-
+  };
+  const currentQuiz = quiz[activeQuiz];
   const { category, difficulty, question, correct_answer, id, all_options } =
     currentQuiz;
-
-  console.log(activeQuiz, quiz.length);
   const gradeAnswer = (answer, index) => {
     setSelected(index);
     if (answer === correct_answer) {
       setScore((x) => x + 1);
-
-      console.log("right");
     } else {
       setScore((x) => x + 0);
-
-      console.log("wrong");
     }
   };
 
   const addLeadingZero = (number) => (number > 9 ? number : `0${number}`);
 
   return (
-    <main className={mainStyles}>
-      <div>
-        <h2 className={titleStyles}>BrainBusters &#x1F913;</h2>
-      </div>
-
-      <div className={containerStyles}>
+   <>
         {!showResult ? (
           <div className={quizContainerStyles}>
             <div className={topInfoStyles}>
@@ -110,21 +87,11 @@ const QuizHome = (quizzes) => {
             </p>
           </div>
         )}
-      </div>
-    </main>
+   </>
   );
 };
 
-const mainStyles = ctl(`
-  flex
-  min-h-screen
-  flex-col
-  items-center
-  justify-center
-bg-gradient-to-t from-gray-700 via-gray-900 to-black
-  px-5
-  py-10	
-`);
+
 
 const buttonContainerStyles = ctl(`
   mt-5
@@ -236,24 +203,12 @@ const resutlTotalScoreStyles = ctl(`
   font-bold
 `);
 
-const containerStyles = ctl(`
-  w-full
-  md:w-3/4
-  lg:w-1/2
-  `);
 
 const topInfoStyles = ctl(`
   flex
   items-center
   justify-between
   
-`);
-
-const titleStyles = ctl(`
-  mb-10
-  text-5xl
-  font-bold
-  text-white
 `);
 
 export default QuizHome;
