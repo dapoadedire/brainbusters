@@ -2,6 +2,8 @@ import { useState } from "react";
 import QuizBank from "./QuizBank";
 import _ from "lodash";
 import ctl from "@netlify/classnames-template-literals";
+import parse from "html-react-parser";
+//  "html-react-parser": "^3.0.7",
 
 const quizzes = QuizBank.results.map((question, index) => {
   question.id = index + 1;
@@ -17,27 +19,20 @@ const QuizHome = () => {
   const [score, setScore] = useState(0);
   const currentQuiz = quizzes[activeQuiz];
   const [selected, setSelected] = useState(null);
-  const [showResult, setShowResult] = useState(false)
+  const [showResult, setShowResult] = useState(false);
 
   function nextQuiz() {
     setSelected(null);
     if (activeQuiz !== quizzes.length - 1) {
       setActiveQuiz((p) => p + 1);
-    }
-    else {
-      setActiveQuiz(0)
+    } else {
+      setActiveQuiz(0);
       setShowResult(true);
     }
   }
 
-  const {
-    category,
-    difficulty,
-    question,
-    correct_answer,
-    id,
-    all_options,
-  } = currentQuiz;
+  const { category, difficulty, question, correct_answer, id, all_options } =
+    currentQuiz;
 
   console.log(activeQuiz, quizzes.length);
   const gradeAnswer = (answer, index) => {
@@ -57,62 +52,66 @@ const QuizHome = () => {
 
   return (
     <main className={mainStyles}>
+      <div>
+        <h2 className={titleStyles}>BrainBusters &#x1F913;</h2>
+      </div>
 
-  
-    <div className={containerStyles}>
-      {!showResult ? (
-        <div className={quizContainerStyles}>
-        
+      <div className={containerStyles}>
+        {!showResult ? (
+          <div className={quizContainerStyles}>
+            <div className={topInfoStyles}>
+              <p className={quizNoStyles}>
+                {addLeadingZero(id)}/
+                <span className="font-bold text-blue-900">
+                  {addLeadingZero(quizzes.length)}
+                </span>
+              </p>
 
-              <div className={topInfoStyles}>
-                <p className={quizNoStyles}>
-                  {addLeadingZero(id)}/{addLeadingZero(quizzes.length)}
-                </p>
+              <p className={difficultyStyles}>{difficulty}</p>
+            </div>
+            <p className={categoryStyles}>{category}</p>
+            <p className={questionStyles}>{parse(question)}</p>
 
-                
-
-                
-                <p className={difficultyStyles}>{difficulty}</p>
-                
-                
-              </div>
-            <p className={categoryStyles}>{category}</p>            <p className={categoryStyles}>{category}</p>
-              <p className={questionStyles}>{question}</p>
-      
-         
-
-          <div className={buttonContainerStyles}>
-            {all_options.map((option, index) => (
-              <button key={index} onClick={() => gradeAnswer(option, index)}
-                className={optionsButtonStyles + ' ' + (selected === index ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black')}
-                // ${selected === index ? 'bg-blue-500 text-white' : ''}
-              >
-                {option}
-              </button>
-            ))}
+            <div className={buttonContainerStyles}>
+              {all_options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => gradeAnswer(option, index)}
+                  className={
+                    optionsButtonStyles +
+                    " " +
+                    (selected === index
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200 text-black")
+                  }
+                >
+                  {parse(option)}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={nextQuiz}
+              disabled={selected === null}
+              className={nextButtonStyles}
+            >
+              {activeQuiz === quizzes.length - 1 ? "Finish" : "Next"}
+            </button>
           </div>
-          <button onClick={nextQuiz} disabled={selected === null} className={nextButtonStyles}>
-            {activeQuiz === quizzes.length - 1 ? "Finish" : "Next"}
-          </button>
-          
-        </div>
-      ) : (
-        <div className={resutlContainerStyles}>
-              <h3 className={resutlTitleStyles}>Result</h3>
-              <p className={resutlTotalQuestionStyles}>
-            Total Question: <span>{quizzes.length}</span>
-          </p>
-              <p className={resutlTotalScoreStyles}>
-            Total Score:<span> {score}</span>
-          </p>
-        </div>
-      )}
-    </div>
+        ) : (
+          <div className={resutlContainerStyles}>
+            <h3 className={resutlTitleStyles}>Result</h3>
+            <p className={resutlTotalQuestionStyles}>
+              Total Question: <span>{quizzes.length}</span>
+            </p>
+            <p className={resutlTotalScoreStyles}>
+              Total Score:<span> {score}</span>
+            </p>
+          </div>
+        )}
+      </div>
     </main>
   );
 };
-
-
 
 const mainStyles = ctl(`
   flex
@@ -120,11 +119,10 @@ const mainStyles = ctl(`
   flex-col
   items-center
   justify-center
-  bg-gray-900
+bg-gradient-to-t from-gray-700 via-gray-900 to-black
   px-5
   py-10	
 `);
-
 
 const buttonContainerStyles = ctl(`
   mt-5
@@ -133,7 +131,6 @@ const buttonContainerStyles = ctl(`
   items-start
   gap-5
 `);
-
 
 const nextButtonStyles = ctl(`
   mt-5
@@ -171,16 +168,14 @@ const questionStyles = ctl(`
 
 `);
 
-
 const categoryStyles = ctl(`
   mt-5
-  mb-10
-   rounded-lg
+   mb-10
+  rounded-lg
   border
   border-gray-400
   p-2
   text-lg
-  mb-10
 
 `);
 
@@ -211,8 +206,6 @@ const quizContainerStyles = ctl(`
   shadow-lg
 `);
 
-
-
 const resutlContainerStyles = ctl(`
   rounded-lg
   bg-white
@@ -241,14 +234,11 @@ const resutlTotalScoreStyles = ctl(`
   font-bold
 `);
 
-
-
 const containerStyles = ctl(`
   w-full
   md:w-3/4
   lg:w-1/2
   `);
-
 
 const topInfoStyles = ctl(`
   flex
@@ -257,11 +247,11 @@ const topInfoStyles = ctl(`
   
 `);
 
-
-
-
-
+const titleStyles = ctl(`
+  mb-10
+  text-5xl
+  font-bold
+  text-white
+`);
 
 export default QuizHome;
-
-
