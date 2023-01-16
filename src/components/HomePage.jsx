@@ -4,6 +4,12 @@ import { useState } from "react";
 import QuizHome from "./QuizBox";
 import _ from "lodash";
 import ctl from "@netlify/classnames-template-literals";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTwitter,
+  faGithub,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Quiz = () => {
   const [requestParams, setRequestParams] = useState({
@@ -33,11 +39,11 @@ const Quiz = () => {
   return (
 
     <>
-      <header>
-        <h2 className={titleStyles}>BrainBusters &#x1F913;</h2>
+      <header className={headerStyles}>
+        <h2 className={titleStyles}>BrainBusters</h2>
       </header>
       <main>
-        <section>
+        <section className={formSectionStyles}>
 
 
           <form
@@ -51,10 +57,15 @@ const Quiz = () => {
               };
               setRequestParams(obj);
             }}
+            className={formStyles}
           >
-            <label htmlFor="amount">
+            <label htmlFor="amount" 
+            className={amountLabelStyles}
+            >
               Amount
-              <select id="amount" name="amount">
+              <select id="amount" name="amount"
+              className={amountInputStyles}
+              >
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -64,9 +75,13 @@ const Quiz = () => {
               </select>
             </label>
 
-            <label htmlFor="category">
+            <label htmlFor="category"
+            className={categoryLabelStyles}
+            >
               Category
-              <select id="category" name="category">
+              <select id="category" name="category"
+              className={categoryInputStyles}
+              >
                 <option value="9">General Knowledge</option>
                 <option value="10">Entertainment: Books</option>
                 <option value="11">Entertainment: Film</option>
@@ -94,19 +109,27 @@ const Quiz = () => {
               </select>
             </label>
 
-            <label htmlFor="difficulty">
+            <label htmlFor="difficulty"
+            className={difficultyLabelStyles}
+            >
               Difficulty
-              <select id="difficulty" name="difficulty">
+              <select id="difficulty" 
+              name="difficulty"
+              className={difficultyInputStyles}
+              >
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
               </select>
             </label>
 
-            <button>Submit</button>
+            <button
+            type="submit"
+            className={submitButtonStyles}
+            >Submit</button>
           </form>
         </section>
-        <section>
+        <section className={quizSectionStyles}>
           {isSuccess && (
          
               <QuizHome
@@ -148,16 +171,136 @@ const Quiz = () => {
 
       </main >
       <footer>
-        <p>Created by Dapo Addedire</p>
+        <footer className={footerStyles}> 
+          <p>
+          
+            <a href="https://www.google.com/search?q=dapo+adedire&oq=dapo+adedire" target="_blank" rel="noreferrer">
+              Built by Dapo Adedire
+            </a>
+          </p>
+          <ul className={socialIconStyles}>
+            <li>
+              <a href="https://www.linkedin.com/in/dapoadedire/" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.github.com/dapoadedire" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.twitter.com/dapo_adedire" target="_blank" rel="noreferrer">
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+            </li>
+          </ul>
+        </footer>
       </footer>
     </>
   );
 };
 
 const titleStyles = ctl(`
-  mb-10
   text-5xl
   font-bold
+  text-white
 `);
+
+const headerStyles = ctl(`
+flex
+justify-center
+bg-purple-500
+p-10
+`)
+
+const formSectionStyles = ctl(`
+mx-1
+my-4
+flex
+justify-center
+`)
+
+
+const formStyles = ctl(`
+flex
+w-11/12 flex-col
+gap-4
+rounded-md
+border
+border-gray-400
+p-4
+
+`)
+
+
+const amountLabelStyles = ctl(`
+flex
+flex-col
+`)
+
+const amountInputStyles = ctl(`
+rounded-md
+border
+border-gray-400
+p-2
+`)
+const categoryLabelStyles = ctl(`
+flex
+flex-col
+`)
+const categoryInputStyles = ctl(`
+rounded-md
+border
+border-gray-400
+p-2
+`)
+const difficultyLabelStyles = ctl(`
+
+flex
+flex-col
+`)
+const difficultyInputStyles = ctl(`
+rounded-md
+border
+border-gray-400
+p-2
+focus:border-purple-500
+`)
+
+const submitButtonStyles = ctl(`
+rounded-md
+bg-purple-500
+p-2
+text-white
+hover:bg-purple-600
+hover:text-gray-100
+`)
+
+const quizSectionStyles = ctl(`
+m-4
+flex
+justify-center
+`)
+
+
+const footerStyles = ctl(`
+flex
+flex-col
+items-center
+justify-center
+p-4
+bg-purple-500
+text-white
+
+
+`)
+
+const socialIconStyles = ctl(`
+flex
+gap-4
+`)
+
+
 
 export default Quiz;
