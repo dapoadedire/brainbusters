@@ -38,7 +38,7 @@ BrainBusters is a React-based Quiz application that allows users to answer quest
 1. Clone the project
 
 ```bash
-  git clone <github.com/dapoadedire/brainbusters>
+  git clone https://github.com/dapoadedire/brainbusters.git
 ```
 
 2. Go to the project directory
@@ -65,6 +65,7 @@ Live Project
 <https://brainbusters.vercel.app/>
 
 ## Screenshots
+![image](https://user-images.githubusercontent.com/95668340/212994704-95dd2d0e-089c-4541-873c-49252e79855f.png)
 
 ## Feedback
 
