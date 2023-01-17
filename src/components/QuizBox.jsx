@@ -169,14 +169,23 @@ const quizNoStyles = ctl(`
 `);
 
 const quizContainerStyles = ctl(`
+  my-10
+  max-w-2xl
   rounded-lg
+  border
+  border-gray-400
   bg-white
   p-5
   shadow-lg
 `);
 
 const resutlContainerStyles = ctl(`
+  my-10
+  w-full
+  max-w-2xl
   rounded-lg
+  border
+  border-gray-400
   bg-white
   p-5
   shadow-lg

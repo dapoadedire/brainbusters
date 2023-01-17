@@ -219,12 +219,15 @@ mx-1
 my-4
 flex
 justify-center
+
 `)
 
 
 const formStyles = ctl(`
-flex
-w-11/12 flex-col
+my-10
+flex w-11/12
+max-w-2xl
+flex-col
 gap-4
 rounded-md
 border
@@ -289,8 +292,8 @@ flex
 flex-col
 items-center
 justify-center
-p-4
 bg-purple-500
+p-4
 text-white
 
 
