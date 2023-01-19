@@ -35,63 +35,61 @@ const QuizHome = (quizzes) => {
   const addLeadingZero = (number) => (number > 9 ? number : `0${number}`);
 
   return (
-   <>
-        {!showResult ? (
-          <div className={quizContainerStyles}>
-            <div className={topInfoStyles}>
-              <p className={quizNoStyles}>
-                {addLeadingZero(id)}/
-                <span className="font-bold text-blue-900">
-                  {addLeadingZero(quiz.length)}
-                </span>
-              </p>
-
-              <p className={difficultyStyles}>{difficulty}</p>
-            </div>
-            <p className={categoryStyles}>{category}</p>
-            <p className={questionStyles}>{parse(question)}</p>
-
-            <div className={buttonContainerStyles}>
-              {all_options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => gradeAnswer(option, index)}
-                  className={
-                    optionsButtonStyles +
-                    " " +
-                    (selected === index
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-black")
-                  }
-                >
-                  {parse(option)}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={nextQuiz}
-              disabled={selected === null}
-              className={nextButtonStyles}
-            >
-              {activeQuiz === quiz.length - 1 ? "Finish" : "Next"}
-            </button>
-          </div>
-        ) : (
-          <div className={resutlContainerStyles}>
-            <h3 className={resutlTitleStyles}>Result</h3>
-            <p className={resutlTotalQuestionStyles}>
-              Total Question: <span>{quiz.length}</span>
+    <>
+      {!showResult ? (
+        <div className={quizContainerStyles}>
+          <div className={topInfoStyles}>
+            <p className={quizNoStyles}>
+              {addLeadingZero(id)}/
+              <span className="font-bold text-blue-900">
+                {addLeadingZero(quiz.length)}
+              </span>
             </p>
-            <p className={resutlTotalScoreStyles}>
-              Total Score:<span> {score}</span>
-            </p>
+
+            <p className={difficultyStyles}>{difficulty}</p>
           </div>
-        )}
-   </>
+          <p className={categoryStyles}>{category}</p>
+          <p className={questionStyles}>{parse(question)}</p>
+
+          <div className={buttonContainerStyles}>
+            {all_options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() => gradeAnswer(option, index)}
+                className={
+                  optionsButtonStyles +
+                  " " +
+                  (selected === index
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 text-black")
+                }
+              >
+                {parse(option)}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={nextQuiz}
+            disabled={selected === null}
+            className={nextButtonStyles}
+          >
+            {activeQuiz === quiz.length - 1 ? "Finish" : "Next"}
+          </button>
+        </div>
+      ) : (
+        <div className={resutlContainerStyles}>
+          <h3 className={resutlTitleStyles}>Result</h3>
+          <p className={resutlTotalQuestionStyles}>
+            Total Question: <span>{quiz.length}</span>
+          </p>
+          <p className={resutlTotalScoreStyles}>
+            Total Score:<span> {score}</span>
+          </p>
+        </div>
+      )}
+    </>
   );
 };
-
-
 
 const buttonContainerStyles = ctl(`
   mt-5
@@ -211,7 +209,6 @@ const resutlTotalScoreStyles = ctl(`
   text-lg
   font-bold
 `);
-
 
 const topInfoStyles = ctl(`
   flex
