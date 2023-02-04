@@ -60,11 +60,11 @@ const Quiz = () => {
             className={formStyles}
           >
             <label htmlFor="amount" 
-            className={amountLabelStyles}
+            className={LabelStyles}
             >
-              Amount
+              Amount:
               <select id="amount" name="amount"
-              className={amountInputStyles}
+              className={InputStyles}
               >
                 <option value="5">5</option>
                 <option value="10">10</option>
@@ -76,11 +76,11 @@ const Quiz = () => {
             </label>
 
             <label htmlFor="category"
-            className={categoryLabelStyles}
+            className={LabelStyles}
             >
-              Category
+              Category:
               <select id="category" name="category"
-              className={categoryInputStyles}
+              className={InputStyles}
               >
                 <option value="9">General Knowledge</option>
                 <option value="10">Entertainment: Books</option>
@@ -110,12 +110,12 @@ const Quiz = () => {
             </label>
 
             <label htmlFor="difficulty"
-            className={difficultyLabelStyles}
+            className={LabelStyles}
             >
-              Difficulty
+              Difficulty:
               <select id="difficulty" 
               name="difficulty"
-              className={difficultyInputStyles}
+              className={InputStyles}
               >
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
@@ -202,6 +202,7 @@ const Quiz = () => {
 };
 
 const titleStyles = ctl(`
+  font-mono
   text-5xl
   font-bold
   text-white
@@ -228,7 +229,7 @@ my-10
 flex w-11/12
 max-w-2xl
 flex-col
-gap-4
+gap-6
 rounded-md
 border
 border-gray-400
@@ -237,38 +238,20 @@ p-4
 `)
 
 
-const amountLabelStyles = ctl(`
+const LabelStyles = ctl(`
 flex
 flex-col
+gap-[0.5rem]
 `)
 
-const amountInputStyles = ctl(`
+const InputStyles = ctl(`
 rounded-md
 border
 border-gray-400
 p-2
-`)
-const categoryLabelStyles = ctl(`
-flex
-flex-col
-`)
-const categoryInputStyles = ctl(`
-rounded-md
-border
-border-gray-400
-p-2
-`)
-const difficultyLabelStyles = ctl(`
-
-flex
-flex-col
-`)
-const difficultyInputStyles = ctl(`
-rounded-md
-border
-border-gray-400
-p-2
-focus:border-purple-500
+focus:border-purple-300
+focus:outline-none
+focus:ring-1
 `)
 
 const submitButtonStyles = ctl(`
