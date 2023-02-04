@@ -37,15 +37,12 @@ const Quiz = () => {
   }
 
   return (
-
     <>
       <header className={headerStyles}>
         <h2 className={titleStyles}>BrainBusters</h2>
       </header>
       <main>
         <section className={formSectionStyles}>
-
-
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -59,13 +56,9 @@ const Quiz = () => {
             }}
             className={formStyles}
           >
-            <label htmlFor="amount" 
-            className={LabelStyles}
-            >
+            <label htmlFor="amount" className={LabelStyles}>
               Amount:
-              <select id="amount" name="amount"
-              className={InputStyles}
-              >
+              <select id="amount" name="amount" className={InputStyles}>
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -75,13 +68,9 @@ const Quiz = () => {
               </select>
             </label>
 
-            <label htmlFor="category"
-            className={LabelStyles}
-            >
+            <label htmlFor="category" className={LabelStyles}>
               Category:
-              <select id="category" name="category"
-              className={InputStyles}
-              >
+              <select id="category" name="category" className={InputStyles}>
                 <option value="9">General Knowledge</option>
                 <option value="10">Entertainment: Books</option>
                 <option value="11">Entertainment: Film</option>
@@ -104,99 +93,101 @@ const Quiz = () => {
                 <option value="28">Vehicles</option>
                 <option value="29">Entertainment: Comics</option>
                 <option value="30">Science: Gadgets</option>
-                <option value="31">Entertainment: Japanese Anime & Manga</option>
+                <option value="31">
+                  Entertainment: Japanese Anime & Manga
+                </option>
                 <option value="32">Entertainment: Cartoon & Animations</option>
               </select>
             </label>
 
-            <label htmlFor="difficulty"
-            className={LabelStyles}
-            >
+            <label htmlFor="difficulty" className={LabelStyles}>
               Difficulty:
-              <select id="difficulty" 
-              name="difficulty"
-              className={InputStyles}
-              >
+              <select id="difficulty" name="difficulty" className={InputStyles}>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
               </select>
             </label>
 
-            <button
-            type="submit"
-            className={submitButtonStyles}
-            >Submit</button>
+            <button type="submit" className={submitButtonStyles}>
+              Submit
+            </button>
           </form>
         </section>
         <section className={quizSectionStyles}>
           {isSuccess && (
-         
-              <QuizHome
-                quizzes={data.results.map((question, index) => {
-                  question.id = index + 1;
-                  question.all_options = _.shuffle([
-                    question.correct_answer,
-                    ...question.incorrect_answers,
-                  ]);
-                  return question;
-                })}
-              />
-
-           
+            <QuizHome
+              quizzes={data.results.map((question, index) => {
+                question.id = index + 1;
+                question.all_options = _.shuffle([
+                  question.correct_answer,
+                  ...question.incorrect_answers,
+                ]);
+                return question;
+              })}
+            />
           )}
           {isLoading && (
             // <div>Loading...</div>
 
             <div className="flex">
               <div className="relative">
+                <div
+                  className="absolute h-14 w-14 rounded-full
+                            border-4 border-solid border-purple-200"
+                ></div>
 
-                <div className="absolute h-14 w-14 rounded-full
-                            border-4 border-solid border-purple-200"></div>
-
-
-                <div className="absolute h-14 w-14 animate-spin rounded-full
-                            border-4 border-solid border-purple-500 border-y-transparent"></div>
+                <div
+                  className="absolute h-14 w-14 animate-spin rounded-full
+                            border-4 border-solid border-purple-500 border-y-transparent"
+                ></div>
               </div>
             </div>
-             
           )}
-      {error && (
-        <div>Error</div>
-      )
-      }
-    </section>
+          {error && <div>Error</div>}
+        </section>
+      </main>
 
-
-
-      </main >
-      
-        <footer className={footerStyles}> 
-          <p>
-          
-            <a href="https://www.google.com/search?q=dapo+adedire&oq=dapo+adedire" target="_blank" rel="noreferrer">
-              Built by Dapo Adedire
+      <footer className={footerStyles}>
+        <p>
+          <a
+            href="https://www.google.com/search?q=dapo+adedire&oq=dapo+adedire"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Built by Dapo Adedire
+          </a>
+        </p>
+        <ul className={socialIconStyles}>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/dapoadedire/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
-          </p>
-          <ul className={socialIconStyles}>
-            <li>
-              <a href="https://www.linkedin.com/in/dapoadedire/" target="_blank" rel="noreferrer">
-                <FontAwesomeIcon icon={faLinkedinIn} />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.github.com/dapoadedire" target="_blank" rel="noreferrer">
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com/dapo_adedire" target="_blank" rel="noreferrer">
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-            </li>
-          </ul>
-        </footer>
-      
+          </li>
+          <li>
+            <a
+              href="https://www.github.com/dapoadedire"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.twitter.com/dapo_adedire"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+          </li>
+        </ul>
+      </footer>
     </>
   );
 };
@@ -213,7 +204,7 @@ flex
 justify-center
 bg-purple-500
 p-10
-`)
+`);
 
 const formSectionStyles = ctl(`
 mx-1
@@ -221,8 +212,7 @@ my-4
 flex
 justify-center
 
-`)
-
+`);
 
 const formStyles = ctl(`
 my-10
@@ -235,14 +225,13 @@ border
 border-gray-400
 p-4
 
-`)
-
+`);
 
 const LabelStyles = ctl(`
 flex
 flex-col
 gap-[0.5rem]
-`)
+`);
 
 const InputStyles = ctl(`
 rounded-md
@@ -252,7 +241,7 @@ p-2
 focus:border-purple-300
 focus:outline-none
 focus:ring-1
-`)
+`);
 
 const submitButtonStyles = ctl(`
 rounded-md
@@ -261,14 +250,13 @@ p-2
 text-white
 hover:bg-purple-600
 hover:text-gray-100
-`)
+`);
 
 const quizSectionStyles = ctl(`
 m-4
 flex
 justify-center
-`)
-
+`);
 
 const footerStyles = ctl(`
 sticky
@@ -280,13 +268,11 @@ justify-center
 bg-purple-500
 p-4 text-white
 
-`)
+`);
 
 const socialIconStyles = ctl(`
 flex
 gap-4
-`)
-
-
+`);
 
 export default Quiz;
