@@ -151,12 +151,12 @@ const Quiz = () => {
             <div className="flex">
               <div className="relative">
 
-                <div className="absolute h-12 w-12 rounded-full
-                            border-8 border-solid border-gray-200"></div>
+                <div className="absolute h-14 w-14 rounded-full
+                            border-4 border-solid border-purple-200"></div>
 
 
-                <div className="absolute h-12 w-12 animate-spin rounded-full
-                            border-8 border-solid border-purple-500 border-t-transparent"></div>
+                <div className="absolute h-14 w-14 animate-spin rounded-full
+                            border-4 border-solid border-purple-500 border-y-transparent"></div>
               </div>
             </div>
              
