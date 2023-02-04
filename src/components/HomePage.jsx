@@ -170,7 +170,7 @@ const Quiz = () => {
 
 
       </main >
-      <footer>
+      
         <footer className={footerStyles}> 
           <p>
           
@@ -196,7 +196,7 @@ const Quiz = () => {
             </li>
           </ul>
         </footer>
-      </footer>
+      
     </>
   );
 };
@@ -288,14 +288,14 @@ justify-center
 
 
 const footerStyles = ctl(`
+sticky
+top-[100vh]
 flex
 flex-col
 items-center
 justify-center
 bg-purple-500
-p-4
-text-white
-
+p-4 text-white
 
 `)
 
